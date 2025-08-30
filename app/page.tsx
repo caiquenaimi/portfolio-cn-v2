@@ -195,8 +195,9 @@ export default function Portfolio() {
         <section id="about" className="py-16 md:py-24 bg-zinc-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden bg-zinc-800">
+              {/* FOTO (DESKTOP) — mantém à esquerda no lg */}
+              <div className="order-2 lg:order-1 hidden lg:flex justify-start">
+                <div className="relative w-96 h-96 rounded-2xl overflow-hidden bg-zinc-800">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/perfil.jpg-rjokFSrHT2w4Llns3BpzN9D6DGNj2K.jpeg"
                     alt="Foto do Caique Naimi"
@@ -205,13 +206,26 @@ export default function Portfolio() {
                 </div>
               </div>
 
+              {/* TEXTO (sempre visível) */}
               <div className="order-1 lg:order-2 text-center lg:text-left">
                 <h4 className="text-primary text-sm sm:text-base font-medium mb-2 uppercase tracking-wider">
                   Quem sou
                 </h4>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-2">
                   Caique Naimi
                 </h2>
+
+                {/* FOTO (MOBILE) — aparece logo abaixo do título no mobile */}
+                <div className="block lg:hidden mb-6">
+                  <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-2xl overflow-hidden bg-zinc-800">
+                    <img
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/perfil.jpg-rjokFSrHT2w4Llns3BpzN9D6DGNj2K.jpeg"
+                      alt="Foto do Caique Naimi"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
                 <h3 className="text-xl sm:text-2xl text-zinc-300 mb-6">
                   Dev Frontend e Backend.
                 </h3>
@@ -259,7 +273,7 @@ export default function Portfolio() {
                     href="https://github.com/caiquenaimi"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-zinc-800 hover:bg-primary rounded-lg transition-colors duration-300"
+                    className="p-3 bg-zinc-800 hover:bg-primary rounded-lg transition-colors duração-300"
                   >
                     <Github size={20} />
                   </a>
