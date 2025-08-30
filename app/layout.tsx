@@ -5,9 +5,11 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Portfólio // Caique Naimi',
+  description: 'Portfólio profissional de um desenvolvedor de software apaixonado por tecnologia.',
+  icons: {
+    icon: '/iconeAba.png', 
+  },
 }
 
 export default function RootLayout({
@@ -16,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         {children}
         <Analytics />

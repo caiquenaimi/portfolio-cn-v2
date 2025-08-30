@@ -168,7 +168,7 @@ export default function Portfolio() {
               <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden bg-zinc-800">
                   <img
-                    src="/placeholder.png?key=1lsib"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/perfil.jpg-rjokFSrHT2w4Llns3BpzN9D6DGNj2K.jpeg"
                     alt="Foto do Caique Naimi"
                     className="w-full h-full object-cover"
                   />
