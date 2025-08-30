@@ -229,8 +229,8 @@ export default function Portfolio() {
 
                 <div className="flex flex-col sm:flex-row gap-4 items-center lg:items-start mb-8">
                   <a
-                    href="#"
-                    download="CaiqueNaimiCV.pdf"
+                    href="/CaiqueNaimiCV.pdf"
+                    download
                     className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
                   >
                     <Download size={20} />
