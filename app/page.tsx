@@ -154,7 +154,7 @@ export default function Portfolio() {
                   onClick={() => scrollToSection("services")}
                   className="block w-full text-left text-zinc-300 hover:text-white transition-colors py-2"
                 >
-                  Capacidades
+                  Tecnologias
                 </button>
               </li>
             </ul>
