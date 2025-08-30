@@ -103,7 +103,7 @@ export default function Portfolio() {
                   onClick={() => scrollToSection("services")}
                   className="text-zinc-300 hover:text-white transition-colors duration-300 relative group cursor-pointer"
                 >
-                  Capacidades
+                  Tecnologias
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </button>
               </li>
@@ -313,7 +313,6 @@ export default function Portfolio() {
                 </a>
               </article>
 
-              {/* Service Desk */}
               <article className="bg-zinc-900 rounded-xl p-6 hover:bg-zinc-800 transition-colors duration-300 group sm:col-span-2 lg:col-span-1">
                 <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">
                   Service Desk
@@ -351,125 +350,128 @@ export default function Portfolio() {
         <section id="services" className="py-16 md:py-24 bg-zinc-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-center mb-12 lg:mb-16">
-              Capacidades
+              Tecnologias
             </h2>
 
-            <div className="relative overflow-hidden mb-12">
-              <div className="flex animate-scroll space-x-8 py-4">
-                <div className="flex space-x-8 min-w-max">
-                  {[
-                    {
-                      name: "HTML5",
-                      icon: <SiHtml5 size={64} color="#E34F26" />,
-                    },
-                    {
-                      name: "CSS3",
-                      icon: <SiCss3 size={64} color="#1572B6" />,
-                    },
-                    {
-                      name: "Tailwind CSS",
-                      icon: <SiTailwindcss size={64} color="#06B6D4" />,
-                    },
-                    {
-                      name: "JavaScript",
-                      icon: <SiJavascript size={64} color="#F7DF1E" />,
-                    },
-                    {
-                      name: "TypeScript",
-                      icon: <SiTypescript size={64} color="#3178C6" />,
-                    },
-                    {
-                      name: "React",
-                      icon: <SiReact size={64} color="#61DAFB" />,
-                    },
-                    {
-                      name: "Next.js",
-                      icon: <SiNextdotjs size={64} color="#000000" />,
-                    },
-                    {
-                      name: "Node.js",
-                      icon: <SiNodedotjs size={64} color="#339933" />,
-                    },
-                    {
-                      name: "Express.js",
-                      icon: <SiExpress size={64} color="#000000" />,
-                    },
-                    {
-                      name: "Python",
-                      icon: <SiPython size={64} color="#3776AB" />,
-                    },
-                    { name: "C", icon: <SiC size={64} color="#A8B9CC" /> },
-                    {
-                      name: "PostgreSQL",
-                      icon: <SiPostgresql size={64} color="#336791" />,
-                    },
-                    {
-                      name: "MySQL",
-                      icon: <SiMysql size={64} color="#4479A1" />,
-                    },
-                    {
-                      name: "Figma",
-                      icon: <SiFigma size={64} color="#F24E1E" />,
-                    },
-                    {
-                      name: "Bootstrap",
-                      icon: <SiBootstrap size={64} color="#7952B3" />,
-                    },
-                    {
-                      name: "React Native",
-                      icon: <SiReactos size={64} color="#61DAFB" />,
-                    },
-                    {
-                      name: "Netlify",
-                      icon: <SiNetlify size={64} color="#00C7B7" />,
-                    },
-                    {
-                      name: "Vercel",
-                      icon: <SiVercel size={64} color="#000000" />,
-                    },
-                  ].map((tech, idx) => (
-                    <div
-                      key={idx}
-                      className="flex flex-col items-center space-y-2 min-w-[100px]"
-                    >
-                      {tech.icon}
-                      <span className="text-sm text-zinc-300">{tech.name}</span>
-                    </div>
-                  ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 text-white">
+                  Frontend
+                </h3>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <SiHtml5
+                    size={40}
+                    color="#E34F26"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiCss3
+                    size={40}
+                    color="#1572B6"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiJavascript
+                    size={40}
+                    color="#F7DF1E"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiTypescript
+                    size={40}
+                    color="#3178C6"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiReact
+                    size={40}
+                    color="#61DAFB"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiNextdotjs
+                    size={40}
+                    className="hover:scale-110 transition text-white"
+                  />
+                  <SiTailwindcss
+                    size={40}
+                    color="#06B6D4"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiBootstrap
+                    size={40}
+                    color="#7952B3"
+                    className="hover:scale-110 transition"
+                  />
                 </div>
               </div>
-            </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              <article className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition-colors duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-primary">
-                  Lógica de programação
+              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 text-white">
+                  Backend
                 </h3>
-                <p className="text-zinc-300 leading-relaxed">
-                  Habilidade de pensar de forma lógica e resolver problemas
-                  estruturadamente.
-                </p>
-              </article>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <SiNodedotjs
+                    size={40}
+                    color="#339933"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiExpress
+                    size={40}
+                    className="hover:scale-110 transition text-white"
+                  />
+                  <SiPython
+                    size={40}
+                    color="#3776AB"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiC
+                    size={40}
+                    color="#A8B9CC"
+                    className="hover:scale-110 transition"
+                  />
+                </div>
+              </div>
 
-              <article className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition-colors duration-300 sm:col-span-2 lg:col-span-1">
-                <h3 className="text-xl font-semibold mb-4 text-primary">
-                  Resolução de Problemas
+              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 text-white">
+                  Banco de Dados
                 </h3>
-                <p className="text-zinc-300 leading-relaxed">
-                  Capacidade de analisar desafios complexos e desenvolver
-                  soluções eficientes e inovadoras.
-                </p>
-              </article>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <SiPostgresql
+                    size={40}
+                    color="#336791"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiMysql
+                    size={40}
+                    color="#4479A1"
+                    className="hover:scale-110 transition"
+                  />
+                </div>
+              </div>
 
-              <article className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition-colors duration-300 sm:col-span-2 lg:col-span-1">
-                <h3 className="text-xl font-semibold mb-4 text-primary">
-                  Vontade de aprender e pesquisar
+              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 text-white">
+                  Ferramentas
                 </h3>
-                <p className="text-zinc-300 leading-relaxed">
-                  Disposição para aprender continuamente, pesquisar soluções e
-                  explorar novas abordagens.
-                </p>
-              </article>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <SiFigma
+                    size={40}
+                    color="#F24E1E"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiNetlify
+                    size={40}
+                    color="#00C7B7"
+                    className="hover:scale-110 transition"
+                  />
+                  <SiVercel
+                    size={40}
+                    className="hover:scale-110 transition text-white"
+                  />
+                  <SiReactos
+                    size={40}
+                    color="#61DAFB"
+                    className="hover:scale-110 transition"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
