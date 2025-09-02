@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Menu,
   X,
@@ -63,50 +64,44 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      <header className="fixed top-0 w-full bg-zinc-950/95 backdrop-blur-sm z-50 border-b border-zinc-800">
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="fixed top-0 w-full bg-zinc-950/95 backdrop-blur-sm z-50 border-b border-zinc-800"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-between items-center h-16 md:h-20">
-            <h1 className="text-xl md:text-2xl font-semibold text-white">
+            <motion.h1
+              whileHover={{ scale: 1.05 }}
+              className="text-xl md:text-2xl font-semibold text-white"
+            >
               Caique Naimi
-            </h1>
+            </motion.h1>
 
             <ul className="hidden md:flex space-x-8 lg:space-x-12">
-              <li>
-                <button
-                  onClick={() => scrollToSection("home")}
-                  className="text-zinc-300 hover:text-white transition-colors duration-300 relative group cursor-pointer"
+              {["home", "about", "projects", "services"].map((section, i) => (
+                <motion.li
+                  key={section}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
                 >
-                  Início
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("about")}
-                  className="text-zinc-300 hover:text-white transition-colors duration-300 relative group cursor-pointer"
-                >
-                  Quem sou
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("projects")}
-                  className="text-zinc-300 hover:text-white transition-colors duration-300 relative group cursor-pointer"
-                >
-                  Projetos
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-zinc-300 hover:text-white transition-colors duration-300 relative group cursor-pointer"
-                >
-                  Tecnologias
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </button>
-              </li>
+                  <button
+                    onClick={() => scrollToSection(section)}
+                    className="text-zinc-300 hover:text-white transition-colors duration-300 relative group cursor-pointer"
+                  >
+                    {section === "home"
+                      ? "Início"
+                      : section === "about"
+                      ? "Quem sou"
+                      : section === "projects"
+                      ? "Projetos"
+                      : "Tecnologias"}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  </button>
+                </motion.li>
+              ))}
             </ul>
 
             <button
@@ -160,7 +155,7 @@ export default function Portfolio() {
             </ul>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <main>
         <section
@@ -168,7 +163,12 @@ export default function Portfolio() {
           className="min-h-screen flex items-center pt-16 md:pt-20"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="text-center lg:text-left max-w-4xl mx-auto lg:mx-0">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center lg:text-left max-w-4xl mx-auto lg:mx-0"
+            >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6 text-balance">
                 Desenvolvedor de <span className="text-primary">software</span>{" "}
                 em busca de novos desafios.
@@ -176,10 +176,16 @@ export default function Portfolio() {
 
               <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 mb-8 min-h-[3rem] text-pretty">
                 {typewriterText}
-                <span className="animate-pulse">|</span>
+                <motion.span
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
               </p>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
                 href="https://www.instagram.com/caiquenaimi/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -187,16 +193,21 @@ export default function Portfolio() {
               >
                 <Instagram size={20} />
                 Instagram
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           </div>
         </section>
 
         <section id="about" className="py-16 md:py-24 bg-zinc-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              {/* FOTO (DESKTOP) — mantém à esquerda no lg */}
-              <div className="order-2 lg:order-1 hidden lg:flex justify-start">
+              <motion.div
+                initial={{ opacity: 0, x: -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="order-2 lg:order-1 hidden lg:flex justify-start"
+              >
                 <div className="relative w-96 h-96 rounded-2xl overflow-hidden bg-zinc-800">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/perfil.jpg-rjokFSrHT2w4Llns3BpzN9D6DGNj2K.jpeg"
@@ -204,10 +215,15 @@ export default function Portfolio() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              {/* TEXTO (sempre visível) */}
-              <div className="order-1 lg:order-2 text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, x: 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="order-1 lg:order-2 text-center lg:text-left"
+              >
                 <h4 className="text-primary text-sm sm:text-base font-medium mb-2 uppercase tracking-wider">
                   Quem sou
                 </h4>
@@ -215,7 +231,6 @@ export default function Portfolio() {
                   Caique Naimi
                 </h2>
 
-                {/* FOTO (MOBILE) — aparece logo abaixo do título no mobile */}
                 <div className="block lg:hidden mb-6">
                   <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-2xl overflow-hidden bg-zinc-800">
                     <img
@@ -241,44 +256,44 @@ export default function Portfolio() {
                   contribuir para o avanço da tecnologia.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 items-center lg:items-start mb-8">
-                  <a
-                    href="/CaiqueNaimiCV.pdf"
-                    download
-                    className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
-                  >
-                    <Download size={20} />
-                    Baixar CV
-                  </a>
-                </div>
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  href="/CaiqueNaimiCV.pdf"
+                  download
+                  className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
+                >
+                  <Download size={20} />
+                  Baixar CV
+                </motion.a>
 
-                <div className="flex justify-center lg:justify-start gap-4">
-                  <a
-                    href="https://www.instagram.com/caiquenaimi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-zinc-800 hover:bg-primary rounded-lg transition-colors duration-300"
-                  >
-                    <Instagram size={20} />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/caique-naimi-b5377b277/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-zinc-800 hover:bg-primary rounded-lg transition-colors duration-300"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="https://github.com/caiquenaimi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-zinc-800 hover:bg-primary rounded-lg transition-colors duração-300"
-                  >
-                    <Github size={20} />
-                  </a>
+                <div className="flex justify-center lg:justify-start gap-4 mt-8">
+                  {[
+                    {
+                      link: "https://www.instagram.com/caiquenaimi/",
+                      icon: <Instagram size={20} />,
+                    },
+                    {
+                      link: "https://www.linkedin.com/in/caique-naimi-b5377b277/",
+                      icon: <Linkedin size={20} />,
+                    },
+                    {
+                      link: "https://github.com/caiquenaimi",
+                      icon: <Github size={20} />,
+                    },
+                  ].map((s, i) => (
+                    <motion.a
+                      key={i}
+                      whileHover={{ scale: 1.1 }}
+                      href={s.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-zinc-800 hover:bg-primary rounded-lg transition-colors duration-300"
+                    >
+                      {s.icon}
+                    </motion.a>
+                  ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -290,73 +305,55 @@ export default function Portfolio() {
             </h2>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-              <article className="bg-zinc-900 rounded-xl p-6 hover:bg-zinc-800 transition-colors duration-300 group">
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-[#e51d37] transition-colors">
-                  Beatflow
-                </h3>
-                <p className="text-zinc-300 mb-6 leading-relaxed">
-                  Aplicativo para descobrir e organizar suas músicas favoritas
-                  de trap e rap.
-                </p>
-                <a
-                  href="https://github.com/caiquenaimi/Beatflow"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#e51d37] hover:text-[#e51d37]/90 font-medium transition-colors"
+              {[
+                {
+                  title: "Beatflow",
+                  desc: "Aplicativo para descobrir e organizar suas músicas favoritas de trap e rap.",
+                  link: "https://github.com/caiquenaimi/Beatflow",
+                  color: "#e51d37",
+                },
+                {
+                  title: "API Brasileirão",
+                  desc: "Site feito utilizando API do Brasileirão para CRUD de times.",
+                  link: "https://brasileirao-6devs.netlify.app",
+                  color: "#a6fb98",
+                },
+                {
+                  title: "Service Desk",
+                  desc: "Sistema para registrar problemas na infraestrutura do SENAI-Valinhos.",
+                  link: "https://servicedesk-front.vercel.app",
+                  color: "#fff",
+                },
+              ].map((proj, i) => (
+                <motion.article
+                  key={proj.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2, duration: 0.6 }}
+                  className="bg-zinc-900 rounded-xl p-6 hover:bg-zinc-800 transition-colors duration-300 group"
                 >
-                  Visualizar projeto
-                  <ExternalLink size={16} />
-                </a>
-              </article>
-
-              <article className="bg-zinc-900 rounded-xl p-6 hover:bg-zinc-800 transition-colors duration-300 group">
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-[#a6fb98] transition-colors">
-                  API Brasileirão
-                </h3>
-                <p className="text-zinc-300 mb-6 leading-relaxed">
-                  Site feito utilizando API do Brasileirão para CRUD de times.
-                </p>
-                <a
-                  href="https://brasileirao-6devs.netlify.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#a6fb98] hover:text-[#a6fb98]/90 font-medium transition-colors"
-                >
-                  Visualizar projeto
-                  <ExternalLink size={16} />
-                </a>
-              </article>
-
-              <article className="bg-zinc-900 rounded-xl p-6 hover:bg-zinc-800 transition-colors duration-300 group sm:col-span-2 lg:col-span-1">
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">
-                  Service Desk
-                </h3>
-                <p className="text-zinc-300 mb-6 leading-relaxed">
-                  Sistema para registrar problemas na infraestrutura do
-                  SENAI-Valinhos.
-                </p>
-                <a
-                  href="https://servicedesk-front.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white hover:text-zinc-300 font-medium transition-colors"
-                >
-                  Visualizar projeto
-                  <ExternalLink size={16} />
-                </a>
-              </article>
-            </div>
-
-            <div className="text-center">
-              <a
-                href="https://github.com/caiquenaimi?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
-              >
-                <Github size={20} />
-                Repositórios no GitHub
-              </a>
+                  <h3
+                    className="text-xl font-semibold mb-3 transition-colors"
+                    style={{ color: proj.color }}
+                  >
+                    {proj.title}
+                  </h3>
+                  <p className="text-zinc-300 mb-6 leading-relaxed">
+                    {proj.desc}
+                  </p>
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-medium transition-colors"
+                    style={{ color: proj.color }}
+                  >
+                    Visualizar projeto
+                    <ExternalLink size={16} />
+                  </a>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>
@@ -368,130 +365,85 @@ export default function Portfolio() {
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Frontend
-                </h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <SiHtml5
-                    size={40}
-                    color="#E34F26"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiCss3
-                    size={40}
-                    color="#1572B6"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiJavascript
-                    size={40}
-                    color="#F7DF1E"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiTypescript
-                    size={40}
-                    color="#3178C6"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiReact
-                    size={40}
-                    color="#61DAFB"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiNextdotjs
-                    size={40}
-                    className="hover:scale-110 transition text-white"
-                  />
-                  <SiTailwindcss
-                    size={40}
-                    color="#06B6D4"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiBootstrap
-                    size={40}
-                    color="#7952B3"
-                    className="hover:scale-110 transition"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Backend
-                </h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <SiNodedotjs
-                    size={40}
-                    color="#339933"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiExpress
-                    size={40}
-                    className="hover:scale-110 transition text-white"
-                  />
-                  <SiPython
-                    size={40}
-                    color="#3776AB"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiC
-                    size={40}
-                    color="#A8B9CC"
-                    className="hover:scale-110 transition"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Banco de Dados
-                </h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <SiPostgresql
-                    size={40}
-                    color="#336791"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiMysql
-                    size={40}
-                    color="#4479A1"
-                    className="hover:scale-110 transition"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Ferramentas
-                </h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <SiFigma
-                    size={40}
-                    color="#F24E1E"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiNetlify
-                    size={40}
-                    color="#00C7B7"
-                    className="hover:scale-110 transition"
-                  />
-                  <SiVercel
-                    size={40}
-                    className="hover:scale-110 transition text-white"
-                  />
-                  <SiReactos
-                    size={40}
-                    color="#61DAFB"
-                    className="hover:scale-110 transition"
-                  />
-                </div>
-              </div>
+              {[
+                {
+                  title: "Frontend",
+                  icons: [
+                    <SiHtml5 key="html" size={40} color="#E34F26" />,
+                    <SiCss3 key="css" size={40} color="#1572B6" />,
+                    <SiJavascript key="js" size={40} color="#F7DF1E" />,
+                    <SiTypescript key="ts" size={40} color="#3178C6" />,
+                    <SiReact key="react" size={40} color="#61DAFB" />,
+                    <SiNextdotjs key="next" size={40} className="text-white" />,
+                    <SiTailwindcss key="tw" size={40} color="#06B6D4" />,
+                    <SiBootstrap key="bt" size={40} color="#7952B3" />,
+                  ],
+                },
+                {
+                  title: "Backend",
+                  icons: [
+                    <SiNodedotjs key="node" size={40} color="#339933" />,
+                    <SiExpress
+                      key="express"
+                      size={40}
+                      className="text-white"
+                    />,
+                    <SiPython key="py" size={40} color="#3776AB" />,
+                    <SiC key="c" size={40} color="#A8B9CC" />,
+                  ],
+                },
+                {
+                  title: "Banco de Dados",
+                  icons: [
+                    <SiPostgresql key="pg" size={40} color="#336791" />,
+                    <SiMysql key="mysql" size={40} color="#4479A1" />,
+                  ],
+                },
+                {
+                  title: "Ferramentas",
+                  icons: [
+                    <SiFigma key="figma" size={40} color="#F24E1E" />,
+                    <SiNetlify key="netlify" size={40} color="#00C7B7" />,
+                    <SiVercel key="vercel" size={40} className="text-white" />,
+                  ],
+                },
+              ].map((cat, i) => (
+                <motion.div
+                  key={cat.title}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2, duration: 0.6 }}
+                  className="bg-zinc-800 rounded-xl p-6 hover:bg-zinc-700 transition duration-300 shadow-lg"
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-white">
+                    {cat.title}
+                  </h3>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {cat.icons.map((icon, idx) => (
+                      <motion.div
+                        key={idx}
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        {icon}
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="py-8 border-t border-zinc-800">
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-8 border-t border-zinc-800"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-zinc-400">
             Copyright © 2025{" "}
@@ -499,7 +451,7 @@ export default function Portfolio() {
             os direitos reservados.
           </p>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
