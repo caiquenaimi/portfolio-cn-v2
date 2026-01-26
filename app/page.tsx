@@ -446,7 +446,7 @@ export default function Portfolio() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-zinc-400">
-            Copyright © 2025{" "}
+            Copyright © 2026{" "}
             <span className="text-white font-medium">Caique Naimi</span> Todos
             os direitos reservados.
           </p>
